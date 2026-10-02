@@ -55,18 +55,19 @@ def signup():
             print("1 : not correct")
             print("2 : correct")
             checking = input("Enter Option : ")
-            if checking == "1":
-                attempt +=1
-                if attempt < max_attempt:
-                    print("try again!!!")
-                else:
-                    print("try after 24 hours later")
-            elif checking == "2":
-                print("Here user name {",new_user, "} and passward {", new_passward,"}")
-                add_data(new_user, new_passward)
-                break
-            else:
-                print(f"wrong credential")
+            match checking:
+                case "1" :
+                        attempt +=1
+                        if attempt < max_attempt:
+                            print("try again!!!")
+                        else:
+                            print("try after 24 hours later")
+                case "2":
+                    print("Here user name {",new_user, "} and passward {", new_passward,"}")
+                    add_data(new_user, new_passward)
+                    break
+                case _:
+                    print(f"wrong credential")
 
 
 #add username and passward in date.
@@ -74,5 +75,4 @@ def add_data(username, passward):
     global data1
     data1[username] = passward
     print(f'Your data are save successfully!!!!!')
-    print(data1)
-    print(len(data1))
+    
