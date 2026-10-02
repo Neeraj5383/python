@@ -1,5 +1,6 @@
 import data 
 
+
 max_attempt, attempt,data1 = data.data()
 def login():
     print("//" * 10, "\n")
@@ -14,7 +15,9 @@ def login():
                 
                 if k == user_name and v == pass_ward:
                     print("login successfully")
-                    break
+                    bank()
+                    
+                   
                 else:
                     print("wrong passward")
                     break
@@ -28,8 +31,7 @@ def login():
             else:
                 print("Try Again after 24 hours")
                         
-            print("login successfully")
-            break
+            
 def signup():
     print("//" * 10, "\n")
     print("SIGNUP\n")
@@ -75,4 +77,57 @@ def add_data(username, passward):
     global data1
     data1[username] = passward
     print(f'Your data are save successfully!!!!!')
+
+
+def bank():
+    cur_bal = 5000
+
+
+    while True:
+        print("Select option")
+        print("1 : Check your balance")
+        print("2 : Do your transition")
+        print("3 : Apply for loan")
+        print("4 : Signout")
+
+        user_input = input("Enter option : ")
     
+        match user_input :
+            case "1":
+                print("Your balance is ", cur_bal, "\n")
+                
+
+            case "2":
+                print("Enter option")
+                print("1 : Debit")
+                print("2 : credit")
+                deb_cre = input("Enter your option : ")
+
+                match deb_cre:
+                    case "1":
+                        debit_amount = int(input("Enter your amount : "))
+                        if debit_amount <= cur_bal:
+                            cur_bal = cur_bal - debit_amount 
+                            print("Your current balance is ", cur_bal , "\n")
+                        else:
+                            print("Insufficient balance")
+                            print("Your current balance is ", cur_bal ,"\n")
+
+                    case "2":
+                        credit_amount = int(input("Enter your amount : "))
+                        cur_bal = credit_amount + cur_bal
+                        print("Your current balance is ", cur_bal, "\n")
+                    case _:
+                        print("Wrong selection!!!\n")
+                
+            
+            case "3":
+                print("appling for load\n")
+                
+
+            case "4":
+                print("Signout")
+                break
+            case _:
+                print("Wrong selection!!!\n")
+
